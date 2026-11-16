@@ -1,0 +1,7 @@
+# Lote "convoy": una tarea muy larga llega primero y atras quedan varias cortas.
+# nombre     llegada  rafaga  prioridad (1 = la mas alta)
+Backup          0      20        4
+Consulta1       1       2        2
+Consulta2       2       3        2
+Alerta          3       1        1
+Consulta3       4       2        3

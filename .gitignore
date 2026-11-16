@@ -1,0 +1,20 @@
+# Binarios (se generan con make)
+planificador
+planificador.exe
+
+# Material de la catedra
+TP integrador 2C-2026-1.pdf
+Template Documentacion UNaHur.docx
+
+# Temporales de Word
+~$*
+
+# Paquete de entrega
+*.zip
+
+# Videos
+*.mp4
+
+# En docs/ solo se publican las capturas
+docs/*
+!docs/capturas/

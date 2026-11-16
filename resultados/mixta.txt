@@ -1,0 +1,90 @@
+Lote: cargas/mixta.txt (5 procesos)
+
+  PID  Nombre      Llegada  Rafaga  Prioridad
+  P1   Reporte           0       8          3
+  P2   Email             1       4          1
+  P3   Backup            2       9          4
+  P4   Compilar          3       5          2
+  P5   Alerta            6       2          1
+
+==================== FCFS (por orden de llegada) ====================
+
+Diagrama de Gantt:
+  |P1              |P2      |P3                |P4        |P5  |
+  0                8        12                 21         26   28
+
+Orden de despacho: P1 -> P2 -> P3 -> P4 -> P5
+
+  PID  Nombre      Llegada  Rafaga  Prioridad   Fin  Retorno  Espera  Respuesta  Estado
+  P1   Reporte           0       8          3     8        8       0          0  TERMINATED
+  P2   Email             1       4          1    12       11       7          7  TERMINATED
+  P3   Backup            2       9          4    21       19      10         10  TERMINATED
+  P4   Compilar          3       5          2    26       23      18         18  TERMINATED
+  P5   Alerta            6       2          1    28       22      20         20  TERMINATED
+
+  Promedios: espera = 11.00   retorno = 16.60   respuesta = 11.00
+  Cambios de contexto: 4   Tiempo total: 28
+
+==================== SJF (primero el mas corto, no expropiativo) ====================
+
+Diagrama de Gantt:
+  |P1              |P5  |P2      |P4        |P3                |
+  0                8    10       14         19                 28
+
+Orden de despacho: P1 -> P5 -> P2 -> P4 -> P3
+
+  PID  Nombre      Llegada  Rafaga  Prioridad   Fin  Retorno  Espera  Respuesta  Estado
+  P1   Reporte           0       8          3     8        8       0          0  TERMINATED
+  P2   Email             1       4          1    14       13       9          9  TERMINATED
+  P3   Backup            2       9          4    28       26      17         17  TERMINATED
+  P4   Compilar          3       5          2    19       16      11         11  TERMINATED
+  P5   Alerta            6       2          1    10        4       2          2  TERMINATED
+
+  Promedios: espera = 7.80   retorno = 13.40   respuesta = 7.80
+  Cambios de contexto: 4   Tiempo total: 28
+
+==================== Prioridades (no expropiativo) ====================
+
+Diagrama de Gantt:
+  |P1              |P2      |P5  |P4        |P3                |
+  0                8        12   14         19                 28
+
+Orden de despacho: P1 -> P2 -> P5 -> P4 -> P3
+
+  PID  Nombre      Llegada  Rafaga  Prioridad   Fin  Retorno  Espera  Respuesta  Estado
+  P1   Reporte           0       8          3     8        8       0          0  TERMINATED
+  P2   Email             1       4          1    12       11       7          7  TERMINATED
+  P3   Backup            2       9          4    28       26      17         17  TERMINATED
+  P4   Compilar          3       5          2    19       16      11         11  TERMINATED
+  P5   Alerta            6       2          1    14        8       6          6  TERMINATED
+
+  Promedios: espera = 8.20   retorno = 13.80   respuesta = 8.20
+  Cambios de contexto: 4   Tiempo total: 28
+
+==================== Round Robin, quantum = 3 ====================
+
+Diagrama de Gantt:
+  |P1    |P2    |P3    |P4    |P1    |P5  |P2 |P3    |P4  |P1  |P3    |
+  0      3      6      9      12     15   17  18     21   23   25     28
+
+Orden de despacho: P1 -> P2 -> P3 -> P4 -> P1 -> P5 -> P2 -> P3 -> P4 -> P1 -> P3
+
+  PID  Nombre      Llegada  Rafaga  Prioridad   Fin  Retorno  Espera  Respuesta  Estado
+  P1   Reporte           0       8          3    25       25      17          0  TERMINATED
+  P2   Email             1       4          1    18       17      13          2  TERMINATED
+  P3   Backup            2       9          4    28       26      17          4  TERMINATED
+  P4   Compilar          3       5          2    23       20      15          6  TERMINATED
+  P5   Alerta            6       2          1    17       11       9          9  TERMINATED
+
+  Promedios: espera = 14.20   retorno = 19.80   respuesta = 4.20
+  Cambios de contexto: 10   Tiempo total: 28
+
+==================== TABLA COMPARATIVA ====================
+
+  Algoritmo          Espera    Retorno   Respuesta   Cambios  Tiempo total
+  FCFS                11.00      16.60       11.00         4            28
+  SJF                  7.80      13.40        7.80         4            28
+  Prioridades          8.20      13.80        8.20         4            28
+  RR (q=3)            14.20      19.80        4.20        10            28
+
+  (promedios en unidades de tiempo; menos es mejor)

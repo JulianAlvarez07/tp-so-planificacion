@@ -1,0 +1,21 @@
+Lote: cargas/mixta.txt (5 procesos)   Costo de cada cambio de contexto: 1
+
+  PID  Nombre      Llegada  Rafaga  Prioridad
+  P1   Reporte           0       8          3
+  P2   Email             1       4          1
+  P3   Backup            2       9          4
+  P4   Compilar          3       5          2
+  P5   Alerta            6       2          1
+
+=========== Round Robin: efecto del quantum (costo de cambio de contexto = 1) ===========
+
+  Quantum      Espera    Retorno   Respuesta   Cambios  Tiempo total
+  1             32.20      37.80        3.60        25            53
+  2             22.00      27.60        5.40        13            41
+  3             21.80      27.40        6.40        10            38
+  4             18.00      23.60        8.60         8            36
+  6             17.20      22.80       10.20         6            34
+  8             14.60      20.20       12.60         5            33
+  12            13.00      18.60       13.00         4            32
+  16            13.00      18.60       13.00         4            32
+  FCFS          13.00      18.60       13.00         4            32

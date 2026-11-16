@@ -1,0 +1,6 @@
+# Lote parejo: todas las tareas duran lo mismo y llegan juntas.
+# nombre     llegada  rafaga  prioridad (1 = la mas alta)
+Lote1           0       6        2
+Lote2           0       6        2
+Lote3           0       6        2
+Lote4           0       6        2

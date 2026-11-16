@@ -1,0 +1,85 @@
+Lote: cargas/parejas.txt (4 procesos)
+
+  PID  Nombre      Llegada  Rafaga  Prioridad
+  P1   Lote1             0       6          2
+  P2   Lote2             0       6          2
+  P3   Lote3             0       6          2
+  P4   Lote4             0       6          2
+
+==================== FCFS (por orden de llegada) ====================
+
+Diagrama de Gantt:
+  |P1          |P2          |P3          |P4          |
+  0            6            12           18           24
+
+Orden de despacho: P1 -> P2 -> P3 -> P4
+
+  PID  Nombre      Llegada  Rafaga  Prioridad   Fin  Retorno  Espera  Respuesta  Estado
+  P1   Lote1             0       6          2     6        6       0          0  TERMINATED
+  P2   Lote2             0       6          2    12       12       6          6  TERMINATED
+  P3   Lote3             0       6          2    18       18      12         12  TERMINATED
+  P4   Lote4             0       6          2    24       24      18         18  TERMINATED
+
+  Promedios: espera = 9.00   retorno = 15.00   respuesta = 9.00
+  Cambios de contexto: 3   Tiempo total: 24
+
+==================== SJF (primero el mas corto, no expropiativo) ====================
+
+Diagrama de Gantt:
+  |P1          |P2          |P3          |P4          |
+  0            6            12           18           24
+
+Orden de despacho: P1 -> P2 -> P3 -> P4
+
+  PID  Nombre      Llegada  Rafaga  Prioridad   Fin  Retorno  Espera  Respuesta  Estado
+  P1   Lote1             0       6          2     6        6       0          0  TERMINATED
+  P2   Lote2             0       6          2    12       12       6          6  TERMINATED
+  P3   Lote3             0       6          2    18       18      12         12  TERMINATED
+  P4   Lote4             0       6          2    24       24      18         18  TERMINATED
+
+  Promedios: espera = 9.00   retorno = 15.00   respuesta = 9.00
+  Cambios de contexto: 3   Tiempo total: 24
+
+==================== Prioridades (no expropiativo) ====================
+
+Diagrama de Gantt:
+  |P1          |P2          |P3          |P4          |
+  0            6            12           18           24
+
+Orden de despacho: P1 -> P2 -> P3 -> P4
+
+  PID  Nombre      Llegada  Rafaga  Prioridad   Fin  Retorno  Espera  Respuesta  Estado
+  P1   Lote1             0       6          2     6        6       0          0  TERMINATED
+  P2   Lote2             0       6          2    12       12       6          6  TERMINATED
+  P3   Lote3             0       6          2    18       18      12         12  TERMINATED
+  P4   Lote4             0       6          2    24       24      18         18  TERMINATED
+
+  Promedios: espera = 9.00   retorno = 15.00   respuesta = 9.00
+  Cambios de contexto: 3   Tiempo total: 24
+
+==================== Round Robin, quantum = 3 ====================
+
+Diagrama de Gantt:
+  |P1    |P2    |P3    |P4    |P1    |P2    |P3    |P4    |
+  0      3      6      9      12     15     18     21     24
+
+Orden de despacho: P1 -> P2 -> P3 -> P4 -> P1 -> P2 -> P3 -> P4
+
+  PID  Nombre      Llegada  Rafaga  Prioridad   Fin  Retorno  Espera  Respuesta  Estado
+  P1   Lote1             0       6          2    15       15       9          0  TERMINATED
+  P2   Lote2             0       6          2    18       18      12          3  TERMINATED
+  P3   Lote3             0       6          2    21       21      15          6  TERMINATED
+  P4   Lote4             0       6          2    24       24      18          9  TERMINATED
+
+  Promedios: espera = 13.50   retorno = 19.50   respuesta = 4.50
+  Cambios de contexto: 7   Tiempo total: 24
+
+==================== TABLA COMPARATIVA ====================
+
+  Algoritmo          Espera    Retorno   Respuesta   Cambios  Tiempo total
+  FCFS                 9.00      15.00        9.00         3            24
+  SJF                  9.00      15.00        9.00         3            24
+  Prioridades          9.00      15.00        9.00         3            24
+  RR (q=3)            13.50      19.50        4.50         7            24
+
+  (promedios en unidades de tiempo; menos es mejor)

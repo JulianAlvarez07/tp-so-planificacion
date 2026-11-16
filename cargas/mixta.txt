@@ -1,0 +1,7 @@
+# Lote mixto: tareas largas y cortas que llegan escalonadas.
+# nombre     llegada  rafaga  prioridad (1 = la mas alta)
+Reporte         0       8        3
+Email           1       4        1
+Backup          2       9        4
+Compilar        3       5        2
+Alerta          6       2        1
